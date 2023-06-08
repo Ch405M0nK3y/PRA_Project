@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace PRA_Project.Dal
 {
-    internal class SubjectRepository : IRepository
+    public class SubjectRepository
     {
 
-        private const string DATA = $"subject.txt";
+        private const string DIR = @"C:\PRA\Txt_Files";
+        private const string SUBJECT_FILE = @$"{DIR}\subjects.txt";
         private const char DEL = '|';
 
         public SubjectRepository() => CreateFilesIfNonExistent();
@@ -18,16 +19,18 @@ namespace PRA_Project.Dal
 
         private void CreateFilesIfNonExistent()
         {
-            if (!File.Exists(DATA))
+            Directory.CreateDirectory(DIR);
+            if (!File.Exists(SUBJECT_FILE))
             {
-                File.Create(DATA).Close();
+                File.Create(SUBJECT_FILE).Close();
             }
         }
 
-        public IDictionary<int, object> Load()
+        public IDictionary<int, Subject> Load()
         {
-            string[] lines = File.ReadAllLines(DATA);
-            IDictionary<int, object> dictionary = new Dictionary<int, object>();
+            Subject.ResetID();
+            string[] lines = File.ReadAllLines(SUBJECT_FILE);
+            IDictionary<int, Subject> dictionary = new Dictionary<int, Subject>();
 
             foreach (string line in lines)
             {
@@ -44,19 +47,19 @@ namespace PRA_Project.Dal
 
         }
 
-        public void Save(IDictionary<int, object> dictionary)
+        public void Save(IDictionary<int, Subject> dictionary)
         {
             string[] fileContent = new string[dictionary.Count];
             int index = 0;
 
-            foreach (object o in dictionary.Values)
+            foreach (Subject o in dictionary.Values)
             {
                 Subject subject = o as Subject;
-                string line = subject.ToString();
+                string line = subject.ParseForFileLine();
                 fileContent[index++] = line;
             }
 
-            File.WriteAllLines(DATA, fileContent);
+            File.WriteAllLines(SUBJECT_FILE, fileContent);
         }   
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PRA_Project
 {
-    partial class AdminClassView
+    partial class AdminSubjectView
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             pbLogo = new PictureBox();
-            flpClassView = new FlowLayoutPanel();
+            flpContainer = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
@@ -43,21 +43,24 @@
             pbLogo.TabIndex = 11;
             pbLogo.TabStop = false;
             // 
-            // flpClassView
+            // flpContainer
             // 
-            flpClassView.Location = new Point(138, 71);
-            flpClassView.Name = "flpClassView";
-            flpClassView.Size = new Size(900, 600);
-            flpClassView.TabIndex = 12;
+            flpContainer.AutoScroll = true;
+            flpContainer.FlowDirection = FlowDirection.TopDown;
+            flpContainer.Location = new Point(194, 85);
+            flpContainer.Name = "flpContainer";
+            flpContainer.Size = new Size(763, 654);
+            flpContainer.TabIndex = 12;
+            flpContainer.WrapContents = false;
             // 
-            // AdminClassView
+            // AdminSubjectView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
-            Controls.Add(flpClassView);
+            Controls.Add(flpContainer);
             Controls.Add(pbLogo);
-            Name = "AdminClassView";
+            Name = "AdminSubjectView";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminViewClasses";
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
@@ -67,6 +70,6 @@
         #endregion
 
         private PictureBox pbLogo;
-        private FlowLayoutPanel flpClassView;
+        private FlowLayoutPanel flpContainer;
     }
 }

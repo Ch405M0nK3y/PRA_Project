@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PRA_Project.Dal
 {
-    internal class NotificationRepository : IRepository
+    public class NotificationRepository 
     {
         private const string DATA = $"notifications.txt";
         private const char DEL = '|';

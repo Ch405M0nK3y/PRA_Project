@@ -9,9 +9,9 @@ namespace PRA_Project.Dal
     public class RepositoryFactory
     {
 
-        public static IRepository GetUserRepository() => new UserRepository();
-        public static IRepository GetNotificationRepository() => new NotificationRepository();
-        public static IRepository GetSubjectRepository() => new SubjectRepository();
+        public static UserRepository GetUserRepository() => new UserRepository();
+        public static NotificationRepository GetNotificationRepository() => new NotificationRepository();
+        public static SubjectRepository GetSubjectRepository() => new SubjectRepository();
 
     }
 }

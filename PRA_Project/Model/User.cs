@@ -9,26 +9,30 @@ namespace PRA_Project.Model
 {
     public abstract class User : IComparable<User>
     {
-        private readonly int id;
+        private static int id=0;
 
-        public User(string firstName, string lastName, bool admin)
+        public User(string firstName, string lastName, string email, bool admin, string password)
         {
             Id = id++;
             FirstName = firstName;
             LastName = lastName;
             Admin = admin;
+            Password = password;
+            Email = email;
         }
 
         public User() { }
-
+        public static void ResetID() => id = 0;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Id { get; set; }
+        public string Email { get; set; }
+        public int Id { get;  set; }
         public bool Admin { get; set; }
+        public string Password { get; set; }
 
-        public static bool isAdmin(string line) => bool.Parse(line.Split('|')[3]);
+        public static bool isAdmin(string line) => bool.Parse(line.Split('|')[4]);
         
-        public override string ToString() => $"{Id}|{FirstName}|{LastName}|{Admin}";
+        public override string ToString() => $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Password}";
 
         public int CompareTo(User? other)
             => this.Id.CompareTo(other.Id);

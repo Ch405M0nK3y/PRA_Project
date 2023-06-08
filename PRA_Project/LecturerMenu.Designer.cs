@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             rtbDescription = new RichTextBox();
-            textBox1 = new TextBox();
+            tbTitle = new TextBox();
             lblDescription = new Label();
             lblTitle = new Label();
             btnSubmit = new Button();
@@ -50,13 +50,13 @@
             rtbDescription.TabIndex = 39;
             rtbDescription.Text = "";
             // 
-            // textBox1
+            // tbTitle
             // 
-            textBox1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(434, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(322, 32);
-            textBox1.TabIndex = 38;
+            tbTitle.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tbTitle.Location = new Point(434, 71);
+            tbTitle.Name = "tbTitle";
+            tbTitle.Size = new Size(322, 32);
+            tbTitle.TabIndex = 38;
             // 
             // lblDescription
             // 
@@ -157,7 +157,7 @@
             Controls.Add(lbl1);
             Controls.Add(flpNews);
             Controls.Add(rtbDescription);
-            Controls.Add(textBox1);
+            Controls.Add(tbTitle);
             Controls.Add(lblDescription);
             Controls.Add(lblTitle);
             Controls.Add(btnSubmit);
@@ -174,7 +174,7 @@
         #endregion
 
         private RichTextBox rtbDescription;
-        private TextBox textBox1;
+        private TextBox tbTitle;
         private Label lblDescription;
         private Label lblTitle;
         private Button btnSubmit;

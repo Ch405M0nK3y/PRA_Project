@@ -33,7 +33,7 @@
             btnAddLecturer = new Button();
             btnAddNews = new Button();
             lblWelcome = new Label();
-            lblName = new Label();
+            lbName = new Label();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
@@ -78,7 +78,7 @@
             btnAddNews.TabIndex = 14;
             btnAddNews.Text = "Add/Edit News";
             btnAddNews.UseVisualStyleBackColor = true;
-            btnAddNews.Click += btnAddNews_Click;
+            btnAddNews.Click += btnAddNotifications_Click;
             // 
             // lblWelcome
             // 
@@ -90,22 +90,22 @@
             lblWelcome.TabIndex = 15;
             lblWelcome.Text = "Welcome, ";
             // 
-            // lblName
+            // lbName
             // 
-            lblName.AutoSize = true;
-            lblName.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            lblName.Location = new Point(137, 9);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(259, 37);
-            lblName.TabIndex = 16;
-            lblName.Text = "\"Insert admin name\"";
+            lbName.AutoSize = true;
+            lbName.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            lbName.Location = new Point(137, 9);
+            lbName.Name = "lbName";
+            lbName.Size = new Size(259, 37);
+            lbName.TabIndex = 16;
+            lbName.Text = "\"Insert admin name\"";
             // 
             // AdminMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
-            Controls.Add(lblName);
+            Controls.Add(lbName);
             Controls.Add(lblWelcome);
             Controls.Add(btnAddNews);
             Controls.Add(btnAddLecturer);
@@ -126,6 +126,6 @@
         private Button btnAddLecturer;
         private Button btnAddNews;
         private Label lblWelcome;
-        private Label lblName;
+        private Label lbName;
     }
 }
