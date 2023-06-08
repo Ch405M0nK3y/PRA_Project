@@ -1,6 +1,6 @@
 ﻿namespace PRA_Project
 {
-    partial class AdminClassView
+    partial class AdminSubjectSelect
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblClass = new Label();
+            btnSubmit = new Button();
             pbLogo = new PictureBox();
-            flpClassView = new FlowLayoutPanel();
+            cbSubjects = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
+            // 
+            // lblClass
+            // 
+            lblClass.AutoSize = true;
+            lblClass.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblClass.Location = new Point(429, 270);
+            lblClass.Name = "lblClass";
+            lblClass.Size = new Size(153, 25);
+            lblClass.TabIndex = 22;
+            lblClass.Text = "Choose Subject:";
+            // 
+            // btnSubmit
+            // 
+            btnSubmit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSubmit.Location = new Point(506, 378);
+            btnSubmit.Name = "btnSubmit";
+            btnSubmit.Size = new Size(171, 52);
+            btnSubmit.TabIndex = 20;
+            btnSubmit.Text = "Submit";
+            btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // pbLogo
             // 
@@ -40,33 +63,40 @@
             pbLogo.Location = new Point(12, 629);
             pbLogo.Name = "pbLogo";
             pbLogo.Size = new Size(120, 120);
-            pbLogo.TabIndex = 11;
+            pbLogo.TabIndex = 19;
             pbLogo.TabStop = false;
             // 
-            // flpClassView
+            // cbSubjects
             // 
-            flpClassView.Location = new Point(138, 71);
-            flpClassView.Name = "flpClassView";
-            flpClassView.Size = new Size(900, 600);
-            flpClassView.TabIndex = 12;
+            cbSubjects.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            cbSubjects.FormattingEnabled = true;
+            cbSubjects.Location = new Point(429, 298);
+            cbSubjects.Name = "cbSubjects";
+            cbSubjects.Size = new Size(322, 33);
+            cbSubjects.TabIndex = 23;
             // 
-            // AdminClassView
+            // AdminNotificationMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
-            Controls.Add(flpClassView);
+            Controls.Add(cbSubjects);
+            Controls.Add(lblClass);
+            Controls.Add(btnSubmit);
             Controls.Add(pbLogo);
-            Name = "AdminClassView";
+            Name = "AdminNotificationMenu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AdminViewClasses";
+            Text = "Add/Edit Notifications";
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
+        private Label lblClass;
+        private Button btnSubmit;
         private PictureBox pbLogo;
-        private FlowLayoutPanel flpClassView;
+        private ComboBox cbSubjects;
     }
 }

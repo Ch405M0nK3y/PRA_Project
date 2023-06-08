@@ -47,7 +47,7 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSubmit.Location = new Point(468, 523);
+            btnSubmit.Location = new Point(459, 521);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(219, 37);
             btnSubmit.TabIndex = 16;
@@ -68,16 +68,16 @@
             // tbFirstName
             // 
             tbFirstName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tbFirstName.Location = new Point(412, 141);
+            tbFirstName.Location = new Point(359, 146);
             tbFirstName.Name = "tbFirstName";
-            tbFirstName.Size = new Size(322, 32);
+            tbFirstName.Size = new Size(409, 32);
             tbFirstName.TabIndex = 17;
             // 
             // lblLectFirstName
             // 
             lblLectFirstName.AutoSize = true;
             lblLectFirstName.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLectFirstName.Location = new Point(412, 113);
+            lblLectFirstName.Location = new Point(359, 118);
             lblLectFirstName.Name = "lblLectFirstName";
             lblLectFirstName.Size = new Size(109, 25);
             lblLectFirstName.TabIndex = 18;
@@ -87,7 +87,7 @@
             // 
             lblLecLastName.AutoSize = true;
             lblLecLastName.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLecLastName.Location = new Point(412, 185);
+            lblLecLastName.Location = new Point(359, 190);
             lblLecLastName.Name = "lblLecLastName";
             lblLecLastName.Size = new Size(106, 25);
             lblLecLastName.TabIndex = 20;
@@ -96,16 +96,16 @@
             // tbLastName
             // 
             tbLastName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tbLastName.Location = new Point(412, 213);
+            tbLastName.Location = new Point(359, 218);
             tbLastName.Name = "tbLastName";
-            tbLastName.Size = new Size(322, 32);
+            tbLastName.Size = new Size(409, 32);
             tbLastName.TabIndex = 19;
             // 
             // lblLecClass
             // 
             lblLecClass.AutoSize = true;
             lblLecClass.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLecClass.Location = new Point(412, 260);
+            lblLecClass.Location = new Point(359, 265);
             lblLecClass.Name = "lblLecClass";
             lblLecClass.Size = new Size(60, 25);
             lblLecClass.TabIndex = 22;
@@ -115,7 +115,7 @@
             // 
             lblLecEmail.AutoSize = true;
             lblLecEmail.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLecEmail.Location = new Point(412, 337);
+            lblLecEmail.Location = new Point(359, 342);
             lblLecEmail.Name = "lblLecEmail";
             lblLecEmail.Size = new Size(64, 25);
             lblLecEmail.TabIndex = 24;
@@ -124,16 +124,16 @@
             // tbEmail
             // 
             tbEmail.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tbEmail.Location = new Point(412, 365);
+            tbEmail.Location = new Point(359, 370);
             tbEmail.Name = "tbEmail";
-            tbEmail.Size = new Size(322, 32);
+            tbEmail.Size = new Size(409, 32);
             tbEmail.TabIndex = 23;
             // 
             // lblLecPassword
             // 
             lblLecPassword.AutoSize = true;
             lblLecPassword.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblLecPassword.Location = new Point(412, 418);
+            lblLecPassword.Location = new Point(359, 423);
             lblLecPassword.Name = "lblLecPassword";
             lblLecPassword.Size = new Size(102, 25);
             lblLecPassword.TabIndex = 26;
@@ -142,10 +142,11 @@
             // tbPassword
             // 
             tbPassword.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tbPassword.Location = new Point(412, 446);
+            tbPassword.Location = new Point(359, 451);
             tbPassword.Name = "tbPassword";
-            tbPassword.Size = new Size(322, 32);
+            tbPassword.Size = new Size(409, 32);
             tbPassword.TabIndex = 25;
+            tbPassword.UseSystemPasswordChar = true;
             // 
             // btnViewAll
             // 
@@ -162,9 +163,9 @@
             // 
             cbSubject.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             cbSubject.FormattingEnabled = true;
-            cbSubject.Location = new Point(412, 288);
+            cbSubject.Location = new Point(359, 293);
             cbSubject.Name = "cbSubject";
-            cbSubject.Size = new Size(322, 33);
+            cbSubject.Size = new Size(409, 33);
             cbSubject.TabIndex = 28;
             // 
             // AdminLecturerAdd
