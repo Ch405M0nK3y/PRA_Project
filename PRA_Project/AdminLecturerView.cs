@@ -22,18 +22,18 @@ namespace PRA_Project
 
         private void LoadData()
         {
-            List<Lecturer> lecturerList = lecturerDictionary.ToList();
-            ShowData();
+           // List<Lecturer> lecturerList = lecturerDictionary.ToList();
+           // ShowData();
         }
 
-        private void ShowData()
-        {
-            flpLecturerView.Controls.Clear();
-            foreach (Lecturer lecturer in lecturerList)
-            {
-                flpLecturerView.Controls.Add(LecturerPanel(lecturer));
-            }
-        }
+        //private void ShowData()
+        //{
+        //    flpLecturerView.Controls.Clear();
+        //    foreach (Lecturer lecturer in lecturerList)
+        //    {
+        //        flpLecturerView.Controls.Add(LecturerPanel(lecturer));
+        //    }
+        //}
 
         private Control LecturerPanel(Lecturer lecturer)
         {

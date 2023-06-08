@@ -10,27 +10,32 @@ using File = System.IO.File;
 
 namespace PRA_Project.Dal
 {
-    internal class UserRepository : IRepository
+    public class UserRepository
     {
- 
-        private const string DATA = $"data.txt";
+
+        private const string DIR = @"C:\PRA\Txt_Files";
+        private const string USER_FILE = @$"{DIR}\users.txt";
         private const char DEL= '|';
         
-        public UserRepository() => CreateFilesIfNonExistent();
+        public UserRepository() => CreateFileIfNonExistent();
 
 
-        private void CreateFilesIfNonExistent()
+        private void CreateFileIfNonExistent()
         {
-            if (!File.Exists(DATA))
+            Directory.CreateDirectory(DIR);
+
+            if (!File.Exists(USER_FILE))
             {
-                File.Create(DATA).Close();
+                File.Create(USER_FILE).Close();
+                Administrator admin = new Administrator().CreateDefaultAdmin();
+                File.WriteAllText(USER_FILE, admin.ToString());
             }
         }
 
-        public IDictionary<int, object> Load()
+        public IDictionary<int, User> Load()
         {
-            string[] lines = File.ReadAllLines(DATA);
-            IDictionary<int, object> dictionary = new Dictionary<int, object>();
+            string[] lines = File.ReadAllLines(USER_FILE);
+            IDictionary<int, User> dictionary = new Dictionary<int, User>();
 
             foreach (string line in lines)
             {
@@ -39,9 +44,13 @@ namespace PRA_Project.Dal
                     Administrator admin = new Administrator().ParseFromFileLine(line,DEL);
                     dictionary.Add(admin.Id,admin);
                 }
+                else
+                {
+                    Lecturer lecturer = new Lecturer().ParseFromFileLine(line, DEL);
+                    dictionary.Add(lecturer.Id, lecturer);
+                }
 
-                Lecturer lecturer = new Lecturer().ParseFromFileLine(line, DEL);
-                dictionary.Add(lecturer.Id, lecturer);
+                
 
             }
 
@@ -49,7 +58,7 @@ namespace PRA_Project.Dal
 
         }
 
-        public void Save(IDictionary<int, object> dictionary)
+        public void Save(IDictionary<int, User> dictionary)
         {
             string[] fileContent = new string[dictionary.Count];
             int index = 0;
@@ -60,7 +69,7 @@ namespace PRA_Project.Dal
                 fileContent[index++] = line;
             }
 
-            File.WriteAllLines(DATA, fileContent);
+            File.WriteAllLines(USER_FILE, fileContent);
         }
     }
 }

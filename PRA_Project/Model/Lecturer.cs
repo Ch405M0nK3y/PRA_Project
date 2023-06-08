@@ -2,7 +2,7 @@
 {
     public class Lecturer : User, IPublisher
     {
-        public Lecturer(string firstName, string lastName, bool admin) : base(firstName, lastName, admin)
+        public Lecturer(string firstName, string lastName, string email, bool admin, string password) : base(firstName, lastName, email, admin, password)
         {
             admin = false;
         }
@@ -40,7 +40,9 @@
             return new Lecturer(
                 FirstName = details[1],
                 LastName = details[2],
-                Admin = bool.Parse(details[3])
+                Email = details[3],
+                Admin = bool.Parse(details[4]),
+                Password = details[5]
                 );
         }
     }

@@ -22,17 +22,17 @@ namespace PRA_Project
 
         private void LoadData()
         {
-            List<Subject> subjectList = subjectDictionary.ToList();
+           // List<Subject> subjectList = subjectDictionary.ToList();
             ShowData();
         }
 
         private void ShowData()
         {
             flpClassView.Controls.Clear();
-            foreach (Subject subject in subjectList)
-            {
-                flpClassView.Controls.Add(SubjectPanel(subject));
-            }
+            //foreach (Subject subject in subjectList)
+            //{
+            //    flpClassView.Controls.Add(SubjectPanel(subject));
+            //}
         }
 
         private Control SubjectPanel(Subject subject)

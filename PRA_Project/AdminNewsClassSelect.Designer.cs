@@ -43,9 +43,9 @@
             lblClass.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             lblClass.Location = new Point(429, 270);
             lblClass.Name = "lblClass";
-            lblClass.Size = new Size(130, 25);
+            lblClass.Size = new Size(153, 25);
             lblClass.TabIndex = 22;
-            lblClass.Text = "Choose Class:";
+            lblClass.Text = "Choose Subject:";
             // 
             // btnSubmit
             // 
@@ -92,9 +92,9 @@
             lblNews.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             lblNews.Location = new Point(429, 346);
             lblNews.Name = "lblNews";
-            lblNews.Size = new Size(135, 25);
+            lblNews.Size = new Size(193, 25);
             lblNews.TabIndex = 24;
-            lblNews.Text = "Choose News:";
+            lblNews.Text = "Choose Notification:";
             lblNews.Click += label1_Click;
             // 
             // AdminNewsClassSelect
@@ -110,7 +110,7 @@
             Controls.Add(pbLogo);
             Name = "AdminNewsClassSelect";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AdminNewsClassSelect";
+            Text = "Add/Edit Notifications";
             Load += AdminNewsClassSelect_Load;
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
