@@ -10,21 +10,16 @@ using System.Windows.Forms;
 
 namespace PRA_Project
 {
-    public partial class AdminClassAdd : Form
+    public partial class TableItem : UserControl
     {
-        public AdminClassAdd()
+        public TableItem()
         {
             InitializeComponent();
+            this.BackColor = Color.Salmon;
+            lbID.Font = new Font("Comic Sans MS", 9, FontStyle.Bold);
+            lbValue.Font = new Font("Comic Sans MS", 9, FontStyle.Bold);
         }
 
-        private void btnSubmitClass_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void btnViewAllClasses_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

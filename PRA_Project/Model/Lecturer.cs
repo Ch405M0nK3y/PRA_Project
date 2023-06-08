@@ -1,47 +1,48 @@
-﻿namespace PRA_Project.Model
+﻿using PRA_Project.Dal;
+
+namespace PRA_Project.Model
 {
-    public class Lecturer : User, IPublisher
+    public class Lecturer : User
     {
-        public Lecturer(string firstName, string lastName, bool admin) : base(firstName, lastName, admin)
+        SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
+        IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
+
+        public Lecturer(string firstName, string lastName, string email, bool admin, Subject subject, string password) : base(firstName, lastName, email, admin, password)
         {
             admin = false;
+            Subject = subject;
         }
 
-        public Lecturer() { }
+        public Lecturer() {  }
 
         public Subject Subject { get; set; }
 
-        public string Email { get; set; }
 
-        public Notification CreateNotification()
-        {
-            throw new NotImplementedException();
-        }
+        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Subject}|{Password}";
 
-        public void DeleteNotification()
-        {
-            throw new NotImplementedException();
-        }
+        public override string ToString()=> $"{Id}, {FirstName}, {LastName}, {Email}, {Subject}, {Password}";
 
-        public Notification GetNotification()
+        public void LoadSubjects()
         {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateNotification()
-        {
-            throw new NotImplementedException();
+            subjectDictionary = subjectRepository.Load();
         }
 
         public Lecturer ParseFromFileLine(string line,char DEL)
         {
+            LoadSubjects();
             string[] details = line.Split(DEL);
+            
 
             return new Lecturer(
                 FirstName = details[1],
                 LastName = details[2],
-                Admin = bool.Parse(details[3])
+                Email = details[3],
+                Admin = bool.Parse(details[4]),
+                Subject = subjectDictionary.Values.SingleOrDefault(x=> x.Name.Equals(details[5])),
+                Password = details[6]
                 );
         }
+
+       
     }
 }

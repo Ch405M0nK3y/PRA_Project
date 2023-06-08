@@ -32,8 +32,9 @@
             lblTitle = new Label();
             btnSubmit = new Button();
             pbLogo = new PictureBox();
-            textBox1 = new TextBox();
+            tbTitle = new TextBox();
             rtbDescription = new RichTextBox();
+            btnViewAll = new Button();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             // 
             lblDescription.AutoSize = true;
             lblDescription.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDescription.Location = new Point(435, 221);
+            lblDescription.Location = new Point(435, 248);
             lblDescription.Name = "lblDescription";
             lblDescription.Size = new Size(119, 25);
             lblDescription.TabIndex = 30;
@@ -51,7 +52,7 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTitle.Location = new Point(435, 127);
+            lblTitle.Location = new Point(435, 169);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(55, 25);
             lblTitle.TabIndex = 28;
@@ -60,7 +61,7 @@
             // btnSubmit
             // 
             btnSubmit.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSubmit.Location = new Point(503, 465);
+            btnSubmit.Location = new Point(515, 478);
             btnSubmit.Name = "btnSubmit";
             btnSubmit.Size = new Size(171, 52);
             btnSubmit.TabIndex = 27;
@@ -78,29 +79,41 @@
             pbLogo.TabIndex = 26;
             pbLogo.TabStop = false;
             // 
-            // textBox1
+            // tbTitle
             // 
-            textBox1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(435, 155);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(322, 32);
-            textBox1.TabIndex = 32;
+            tbTitle.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tbTitle.Location = new Point(435, 197);
+            tbTitle.Name = "tbTitle";
+            tbTitle.Size = new Size(322, 32);
+            tbTitle.TabIndex = 32;
             // 
             // rtbDescription
             // 
-            rtbDescription.Location = new Point(435, 249);
+            rtbDescription.Location = new Point(435, 276);
             rtbDescription.Name = "rtbDescription";
             rtbDescription.Size = new Size(322, 183);
             rtbDescription.TabIndex = 33;
             rtbDescription.Text = "";
+            // 
+            // btnViewAll
+            // 
+            btnViewAll.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            btnViewAll.Location = new Point(1001, 697);
+            btnViewAll.Name = "btnViewAll";
+            btnViewAll.Size = new Size(171, 52);
+            btnViewAll.TabIndex = 36;
+            btnViewAll.Text = "View all";
+            btnViewAll.UseVisualStyleBackColor = true;
+            btnViewAll.Click += btnViewAll_Click;
             // 
             // AdminNewsEdditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
+            Controls.Add(btnViewAll);
             Controls.Add(rtbDescription);
-            Controls.Add(textBox1);
+            Controls.Add(tbTitle);
             Controls.Add(lblDescription);
             Controls.Add(lblTitle);
             Controls.Add(btnSubmit);
@@ -108,7 +121,6 @@
             Name = "AdminNewsEdditor";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminNewsEdditor";
-            Load += AdminNewsEdditor_Load;
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -120,7 +132,8 @@
         private Label lblTitle;
         private Button btnSubmit;
         private PictureBox pbLogo;
-        private TextBox textBox1;
+        private TextBox tbTitle;
         private RichTextBox rtbDescription;
+        private Button btnViewAll;
     }
 }

@@ -81,8 +81,11 @@
             tbPassword.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             tbPassword.Location = new Point(403, 413);
             tbPassword.Name = "tbPassword";
+            tbPassword.PasswordChar = '^';
             tbPassword.Size = new Size(322, 32);
             tbPassword.TabIndex = 12;
+            tbPassword.UseSystemPasswordChar = true;
+            tbPassword.KeyDown += tbPassword_KeyDown;
             // 
             // btnLogin
             // 
@@ -121,7 +124,6 @@
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
-            Load += Login_Load_1;
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();

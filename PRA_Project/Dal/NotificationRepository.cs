@@ -7,37 +7,43 @@ using System.Threading.Tasks;
 
 namespace PRA_Project.Dal
 {
-    internal class NotificationRepository : IRepository
+    public class NotificationRepository 
     {
-        private const string DATA = $"notifications.txt";
         private const char DEL = '|';
+        private const string DIR = @"C:\PRA\Txt_Files";
+        private const string NOTIFICATION_FILE = @$"{DIR}\notifications.txt";
+
+
+        SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
+        IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
+
+        UserRepository userRepository = RepositoryFactory.GetUserRepository();
+        IDictionary<int, User> userDictionary = new Dictionary<int, User>();
 
         public NotificationRepository() => CreateFilesIfNonExistent();
 
 
         private void CreateFilesIfNonExistent()
         {
-            if (!File.Exists(DATA))
+            Directory.CreateDirectory(DIR);
+            if (!File.Exists(NOTIFICATION_FILE))
             {
-                File.Create(DATA).Close();
+                File.Create(NOTIFICATION_FILE).Close();
             }
         }
 
-        public IDictionary<int, object> Load()
+        public IDictionary<int, Notification> Load()
         {
-            string[] lines = File.ReadAllLines(DATA);
-            IDictionary<int, object> dictionary = new Dictionary<int, object>();
+            Notification.ResetID();
+            string[] lines = File.ReadAllLines(NOTIFICATION_FILE);
+            IDictionary<int, Notification> dictionary = new Dictionary<int, Notification>();
 
             foreach (string line in lines)
             {
-                string[] details = line.Split(DEL);
                 
-                dictionary.Add(int.Parse(details[0]), new Notification
-                {
-                    Title = details[1],
-                    Subject = new Subject().ParseFromFileLine(details[2], DEL),
-                    Description = details[3]
-                });
+                Notification notification = ParseFromFileLine(line, DEL);
+
+                dictionary.Add(notification.Id, notification);
 
             }
 
@@ -45,7 +51,36 @@ namespace PRA_Project.Dal
 
         }
 
-        public void Save(IDictionary<int, object> dictionary)
+        public void LoadSubjectsAndUsers()
+        {
+            subjectDictionary = subjectRepository.Load();
+            userDictionary = userRepository.Load();
+        }
+
+        public Notification ParseFromFileLine(string line, char DEL)
+        {
+            LoadSubjectsAndUsers();
+            string[] details = line.Split(DEL);
+
+
+            return new Notification(details[1], GetSubject(line), details[3], GetUser(line), DateTime.Parse(details[5]), bool.Parse(details[6]));
+        }
+
+        private Subject GetSubject(string line)
+        {
+            string[] details = line.Split('|');
+            return subjectDictionary.Values.SingleOrDefault(x => x.Name.Equals(details[2]));
+
+        }
+
+        private User GetUser(string line)
+        {
+            string[] details = line.Split('|');
+            return userDictionary.Values.SingleOrDefault(x => x.Email.Equals(details[4]));
+
+        }
+
+        public void Save(IDictionary<int, Notification> dictionary)
         {
             string[] fileContent = new string[dictionary.Count];
             int index = 0;
@@ -53,11 +88,11 @@ namespace PRA_Project.Dal
             foreach (object o in dictionary.Values)
             {
                 Notification notification = o as Notification;
-                string line = notification.ToString();
+                string line = notification.ParseForFileLine();
                 fileContent[index++] = line;
             }
 
-            File.WriteAllLines(DATA, fileContent);
+            File.WriteAllLines(NOTIFICATION_FILE, fileContent);
         }
 
        
