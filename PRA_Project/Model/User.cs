@@ -9,7 +9,7 @@ namespace PRA_Project.Model
 {
     public abstract class User : IComparable<User>
     {
-        private readonly int id;
+        private static int id=0;
 
         public User(string firstName, string lastName, string email, bool admin, string password)
         {
@@ -22,11 +22,11 @@ namespace PRA_Project.Model
         }
 
         public User() { }
-
+        public static void ResetID() => id = 0;
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public int Id { get; set; }
+        public int Id { get;  set; }
         public bool Admin { get; set; }
         public string Password { get; set; }
 

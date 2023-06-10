@@ -48,6 +48,7 @@ namespace PRA_Project
 
         private void Init()
         {
+            
             userRepository = RepositoryFactory.GetUserRepository();
             lblError.Visible = false;
             LoadUsers();
@@ -109,7 +110,7 @@ namespace PRA_Project
 
             User user = userDictionary.Values.ToList().Find(u => u.Email.Equals(username));
 
-            if (user.Password.Equals(password))
+            if (user != null && user.Password.Equals(password))
             {
                 lblError.Visible = false;
                 success = true;

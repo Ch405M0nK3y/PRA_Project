@@ -43,7 +43,7 @@ namespace PRA_Project
         }
         private void CreateNewClassViewForm()
         {
-            Form newForm = new AdminNewsClassSelect();
+            Form newForm = new AdminSubjectView();
             Application.Run(newForm);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace PRA_Project
 {
-    partial class AdminLecturerView
+    partial class NotificationView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flpContainer = new FlowLayoutPanel();
             pbLogo = new PictureBox();
+            flpContainer = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
-            // 
-            // flpContainer
-            // 
-            flpContainer.AutoScroll = true;
-            flpContainer.FlowDirection = FlowDirection.TopDown;
-            flpContainer.Location = new Point(138, 71);
-            flpContainer.Name = "flpContainer";
-            flpContainer.Size = new Size(900, 600);
-            flpContainer.TabIndex = 14;
-            flpContainer.WrapContents = false;
             // 
             // pbLogo
             // 
@@ -50,26 +40,35 @@
             pbLogo.Location = new Point(12, 629);
             pbLogo.Name = "pbLogo";
             pbLogo.Size = new Size(120, 120);
-            pbLogo.TabIndex = 13;
+            pbLogo.TabIndex = 12;
             pbLogo.TabStop = false;
             // 
-            // AdminLecturerView
+            // flpContainer
+            // 
+            flpContainer.AutoScroll = true;
+            flpContainer.FlowDirection = FlowDirection.TopDown;
+            flpContainer.Location = new Point(138, 66);
+            flpContainer.Name = "flpContainer";
+            flpContainer.Size = new Size(1034, 656);
+            flpContainer.TabIndex = 13;
+            flpContainer.WrapContents = false;
+            // 
+            // NotificationView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
             Controls.Add(flpContainer);
             Controls.Add(pbLogo);
-            Name = "AdminLecturerView";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "AdminLecturerView";
+            Name = "NotificationView";
+            Text = "NotificationView";
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private FlowLayoutPanel flpContainer;
         private PictureBox pbLogo;
+        private FlowLayoutPanel flpContainer;
     }
 }

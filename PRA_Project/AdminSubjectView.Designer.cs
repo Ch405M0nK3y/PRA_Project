@@ -1,6 +1,6 @@
 ﻿namespace PRA_Project
 {
-    partial class AdminLecturerView
+    partial class AdminSubjectView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flpContainer = new FlowLayoutPanel();
             pbLogo = new PictureBox();
+            flpContainer = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
-            // 
-            // flpContainer
-            // 
-            flpContainer.AutoScroll = true;
-            flpContainer.FlowDirection = FlowDirection.TopDown;
-            flpContainer.Location = new Point(138, 71);
-            flpContainer.Name = "flpContainer";
-            flpContainer.Size = new Size(900, 600);
-            flpContainer.TabIndex = 14;
-            flpContainer.WrapContents = false;
             // 
             // pbLogo
             // 
@@ -50,26 +40,36 @@
             pbLogo.Location = new Point(12, 629);
             pbLogo.Name = "pbLogo";
             pbLogo.Size = new Size(120, 120);
-            pbLogo.TabIndex = 13;
+            pbLogo.TabIndex = 11;
             pbLogo.TabStop = false;
             // 
-            // AdminLecturerView
+            // flpContainer
+            // 
+            flpContainer.AutoScroll = true;
+            flpContainer.FlowDirection = FlowDirection.TopDown;
+            flpContainer.Location = new Point(194, 85);
+            flpContainer.Name = "flpContainer";
+            flpContainer.Size = new Size(763, 654);
+            flpContainer.TabIndex = 12;
+            flpContainer.WrapContents = false;
+            // 
+            // AdminSubjectView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
             Controls.Add(flpContainer);
             Controls.Add(pbLogo);
-            Name = "AdminLecturerView";
+            Name = "AdminSubjectView";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AdminLecturerView";
+            Text = "AdminViewClasses";
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private FlowLayoutPanel flpContainer;
         private PictureBox pbLogo;
+        private FlowLayoutPanel flpContainer;
     }
 }

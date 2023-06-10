@@ -11,7 +11,7 @@ namespace PRA_Project.Model
     {
         public Administrator(string firstName, string lastName, string email, bool admin, string password) : base( firstName, lastName, email, admin, password)
         {
-             
+            
         }
 
         public Administrator() { }
@@ -22,14 +22,14 @@ namespace PRA_Project.Model
             {
                 FirstName = "admin",
                 LastName = "admin",
-                Email = "admin@pra.hr",
+                Email = "a",
                 Admin = true,
-                Password = "Pa$$w0rd"
+                Password = "a"
                 
             };
             return administator;
         }
-
+        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Password}";
         public Administrator ParseFromFileLine(string line,char DEL)
         {
             string[] details = line.Split(DEL);
