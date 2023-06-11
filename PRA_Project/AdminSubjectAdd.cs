@@ -23,14 +23,15 @@ namespace PRA_Project
 
         SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
         IDictionary<int, Subject> dictionary;
-
-
-
+        
+        
+        
 
         private void btnSubmitClass_Click(object sender, EventArgs e)
         {
             Subject sub = new Subject(tbClassName.Text);
             dictionary.Add(sub.Id, sub);
+            tbClassName.Text = "";
             subjectRepository.Save(dictionary);
             if (tbClassName.Text == "")
             {
@@ -39,8 +40,8 @@ namespace PRA_Project
             }
             else
             {
-                MessageBox.Show("Successfully submitted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            MessageBox.Show("Successfully submitted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
             tbClassName.Text = "";
 
         }
