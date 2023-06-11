@@ -38,7 +38,8 @@ namespace PRA_Project.Dal
 
                 dictionary.Add(int.Parse(details[0]), new Subject
                 {
-                    Name = details[1]
+                    Name = details[1],
+                    IsDeleted = bool.Parse(details[2])
                 });
 
             }

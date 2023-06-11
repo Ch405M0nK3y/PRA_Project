@@ -9,7 +9,7 @@ namespace PRA_Project.Model
 {
     public class Administrator : User
     {
-        public Administrator(string firstName, string lastName, string email, bool admin, string password) : base( firstName, lastName, email, admin, password)
+        public Administrator(string firstName, string lastName, string email, bool admin, string password, bool isDeleted) : base( firstName, lastName, email, admin, password, isDeleted)
         {
             
         }
@@ -29,7 +29,7 @@ namespace PRA_Project.Model
             };
             return administator;
         }
-        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Password}";
+        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Password}|{IsDeleted}";
         public Administrator ParseFromFileLine(string line,char DEL)
         {
             string[] details = line.Split(DEL);
@@ -39,7 +39,8 @@ namespace PRA_Project.Model
                     LastName = details[2],
                     Email = details[3],
                     Admin = bool.Parse(details[4]),
-                    Password = details[5]
+                    Password = details[5],
+                    IsDeleted = false
                     );
             
         }
