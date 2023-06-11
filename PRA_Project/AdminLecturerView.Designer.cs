@@ -39,7 +39,7 @@
             flpContainer.FlowDirection = FlowDirection.TopDown;
             flpContainer.Location = new Point(138, 71);
             flpContainer.Name = "flpContainer";
-            flpContainer.Size = new Size(900, 600);
+            flpContainer.Size = new Size(1034, 600);
             flpContainer.TabIndex = 14;
             flpContainer.WrapContents = false;
             // 

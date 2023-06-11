@@ -61,6 +61,7 @@
             Controls.Add(flpContainer);
             Controls.Add(pbLogo);
             Name = "NotificationView";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "NotificationView";
             ((System.ComponentModel.ISupportInitialize)pbLogo).EndInit();
             ResumeLayout(false);

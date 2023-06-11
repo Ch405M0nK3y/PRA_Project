@@ -22,9 +22,9 @@ namespace PRA_Project.Model
             {
                 FirstName = "admin",
                 LastName = "admin",
-                Email = "a",
+                Email = "admin@racunarstvo.hr",
                 Admin = true,
-                Password = "a"
+                Password = "Pa$$w0rd"
                 
             };
             return administator;

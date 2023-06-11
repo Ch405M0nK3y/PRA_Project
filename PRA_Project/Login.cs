@@ -95,10 +95,10 @@ namespace PRA_Project
             Application.Run(newForm);
         }
         private void CreateNewLecturerForm()
-
         {
-            //TODO dodaj konstruktor s logged in userom
-            Form newForm = new LecturerMenu(); //dodaj parametar koji ti fali ovdje);
+            Lecturer lecturer = loggedInUser as Lecturer;
+            
+            Form newForm = new AdminNewsEdditor(lecturer.Subject, loggedInUser); 
 
             Application.Run(newForm);
 

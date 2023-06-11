@@ -27,7 +27,7 @@ namespace PRA_Project.Model
             subjectDictionary = subjectRepository.Load();
         }
 
-        public Lecturer ParseFromFileLine(string line, char DEL)
+        public Lecturer ParseFromFileLine(string line,char DEL)
         {
             LoadSubjects();
             string[] details = line.Split(DEL);

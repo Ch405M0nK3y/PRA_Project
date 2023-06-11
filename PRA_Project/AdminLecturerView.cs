@@ -25,6 +25,7 @@ namespace PRA_Project
 
         private void LoadData()
         {
+
             userDictionary = userRepository.Load();
             ShowData();
         }
@@ -39,6 +40,8 @@ namespace PRA_Project
                     TableItem tableItem = new TableItem();
                     tableItem.lbID.Text = lecturer.Id.ToString();
                     tableItem.lbValue.Text = lecturer.ToString();
+                    tableItem.btnDelete.Visible = false;
+                    tableItem.btnEdit.Visible = false;
                     flpContainer.Controls.Add(tableItem);
                 }
             }

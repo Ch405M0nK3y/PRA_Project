@@ -30,6 +30,8 @@
         {
             splitContainer1 = new SplitContainer();
             lbID = new Label();
+            btnDelete = new Button();
+            btnEdit = new Button();
             lbValue = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -49,9 +51,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(btnDelete);
+            splitContainer1.Panel2.Controls.Add(btnEdit);
             splitContainer1.Panel2.Controls.Add(lbValue);
-            splitContainer1.Size = new Size(760, 71);
-            splitContainer1.SplitterDistance = 126;
+            splitContainer1.Size = new Size(1014, 71);
+            splitContainer1.SplitterDistance = 167;
             splitContainer1.TabIndex = 0;
             // 
             // lbID
@@ -62,6 +66,24 @@
             lbID.TabIndex = 0;
             lbID.Text = "ID";
             lbID.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(717, 23);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 2;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Location = new Point(636, 23);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(75, 23);
+            btnEdit.TabIndex = 1;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = true;
             // 
             // lbValue
             // 
@@ -78,7 +100,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(splitContainer1);
             Name = "TableItem";
-            Size = new Size(760, 71);
+            Size = new Size(1014, 71);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -91,5 +113,7 @@
         private SplitContainer splitContainer1;
         public Label lbID;
         public Label lbValue;
+        public Button btnDelete;
+        public Button btnEdit;
     }
 }

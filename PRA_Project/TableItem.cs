@@ -16,8 +16,8 @@ namespace PRA_Project
         {
             InitializeComponent();
             this.BackColor = Color.Salmon;
-            lbID.Font = new Font("Comic Sans MS", 13, FontStyle.Bold);
-            lbValue.Font = new Font("Comic Sans MS", 13, FontStyle.Bold);
+            lbID.Font = new Font("Comic Sans MS", 9, FontStyle.Bold);
+            lbValue.Font = new Font("Comic Sans MS", 9, FontStyle.Bold);
         }
 
 

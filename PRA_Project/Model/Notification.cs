@@ -10,7 +10,7 @@ namespace PRA_Project.Model
 {
     public class Notification : IComparable<Notification>
     {
-        private static int id;
+        private static int id= 1;
 
         SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
         IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
@@ -18,18 +18,18 @@ namespace PRA_Project.Model
         UserRepository userRepository = RepositoryFactory.GetUserRepository();
         IDictionary<int, User> userDictionary = new Dictionary<int, User>();
 
-        public Notification(string title, Subject subject, string description)
+        public Notification(string title, Subject subject, string description, User publisher, DateTime datePublished, bool isDeleted)
         {
             Id = id++;
             Title = title;
             Subject = subject;
             Description = description;
+            Publisher = publisher;
+            DatePublished = datePublished;
+            IsDeleted = false;
         }
 
-        public Notification()
-        {
-            Id = id++;
-        }
+        public Notification() { Id = id++; }
         public void LoadSubjectsAndUsers()
         {
             subjectDictionary = subjectRepository.Load();
@@ -42,27 +42,17 @@ namespace PRA_Project.Model
         public string Description { get; set; }
         public User Publisher { get; set; }
         public DateTime DatePublished { get; set; }
+        public bool IsDeleted { get; set; }
 
-        public Notification ParseFromFileLine(string line, char DEL)
-        {
-            LoadSubjectsAndUsers();
-            string[] details = line.Split(DEL);
-
-
-            return new Notification
-            {
-                Title = details[1],
-                Subject = subjectDictionary.Values.SingleOrDefault(x => x.Name.Equals(details[2])),
-                Description = details[3],
-                Publisher = userDictionary.Values.SingleOrDefault(x=> x.Email.Equals(details[4])),
-                //DatePublished = DateTime.Parse(details[5])
-            };
-        }
         
 
-        public override string ToString() => $"{Title}, {Subject}, {Description}, {Publisher.FirstName} {Publisher.LastName}, {DatePublished}";
+       
 
-        public string ParseForFileLine() =>$"{id}|{Title}|{Subject}|{Description}|{Publisher.Email}|{DatePublished}";
+        public static void ResetID() => id = 1;
+        public void Delete() => IsDeleted = true;
+        public override string ToString() => $"{Title}, {Subject}, {Publisher.FirstName} {Publisher.LastName}, {DatePublished}";
+
+        public string ParseForFileLine() =>$"{id}|{Title}|{Subject}|{Description}|{Publisher.Email}|{DatePublished}|{IsDeleted}";
 
         public int CompareTo(Notification? other)
         {
