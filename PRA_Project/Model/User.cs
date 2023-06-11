@@ -11,7 +11,7 @@ namespace PRA_Project.Model
     {
         private static int id=0;
 
-        public User(string firstName, string lastName, string email, bool admin, string password)
+        public User(string firstName, string lastName, string email, bool admin, string password, bool isDeleted)
         {
             Id = id++;
             FirstName = firstName;
@@ -19,6 +19,7 @@ namespace PRA_Project.Model
             Admin = admin;
             Password = password;
             Email = email;
+            IsDeleted= isDeleted;
         }
 
         public User() { }
@@ -30,9 +31,13 @@ namespace PRA_Project.Model
         public bool Admin { get; set; }
         public string Password { get; set; }
 
+        public bool IsDeleted { get; set; }
+
+        public void Delete() => IsDeleted = true;
+
         public static bool isAdmin(string line) => bool.Parse(line.Split('|')[4]);
         
-        public override string ToString() => $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Password}";
+        public override string ToString() => $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Password}|{IsDeleted}";
 
         public int CompareTo(User? other)
             => this.Id.CompareTo(other.Id);

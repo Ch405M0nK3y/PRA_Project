@@ -24,7 +24,7 @@ namespace PRA_Project
             LoadData();
         }
 
-        
+
 
         private void LoadData()
         {

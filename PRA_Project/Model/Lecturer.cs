@@ -7,7 +7,7 @@ namespace PRA_Project.Model
         SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
         IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
 
-        public Lecturer(string firstName, string lastName, string email, bool admin, Subject subject, string password) : base(firstName, lastName, email, admin, password)
+        public Lecturer(string firstName, string lastName, string email, bool admin, Subject subject, string password, bool isDeleted) : base(firstName, lastName, email, admin, password, isDeleted)
         {
             admin = false;
             Subject = subject;
@@ -17,10 +17,9 @@ namespace PRA_Project.Model
 
         public Subject Subject { get; set; }
 
+        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Subject}|{Password}|{IsDeleted}";
 
-        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Subject}|{Password}";
-
-        public override string ToString()=> $"{Id}, {FirstName}, {LastName}, {Email}, {Subject}, {Password}";
+        public override string ToString()=> $"{FirstName}, {LastName}, {Email}, {Subject}, {Password}";
 
         public void LoadSubjects()
         {
@@ -39,7 +38,8 @@ namespace PRA_Project.Model
                 Email = details[3],
                 Admin = bool.Parse(details[4]),
                 Subject = subjectDictionary.Values.SingleOrDefault(x=> x.Name.Equals(details[5])),
-                Password = details[6]
+                Password = details[6],
+                IsDeleted = bool.Parse(details[7])
                 );
         }
 

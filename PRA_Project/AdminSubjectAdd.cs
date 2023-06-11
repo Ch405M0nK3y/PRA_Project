@@ -80,14 +80,5 @@ namespace PRA_Project
             Application.Run(newForm);
         }
 
-
-
-
-
-
-
-
-
-
     }
 }
