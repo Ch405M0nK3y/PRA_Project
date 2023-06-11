@@ -33,7 +33,17 @@ namespace PRA_Project
             dictionary.Add(sub.Id, sub);
             tbClassName.Text = "";
             subjectRepository.Save(dictionary);
+            if (tbClassName.Text == "")
+            {
+                MessageBox.Show("Input a name!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
             MessageBox.Show("Successfully submitted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+            tbClassName.Text = "";
+
         }
 
         private void btnViewAllClasses_Click(object sender, EventArgs e)
