@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +12,13 @@ namespace PRA_Project.Model
         private static int id;
         public int Id { get;}
         public string Name { get; set; }
+        public bool IsDeleted { get; set; }
 
-        public Subject(string name)
+        public Subject(string name, bool isDeleted)
         {
             Id = id++;
             Name = name;
+            IsDeleted = isDeleted;
         }
 
         public Subject() 
@@ -24,10 +27,11 @@ namespace PRA_Project.Model
         }
 
         public static void ResetID() => id = 0;
+        public void Delete() => IsDeleted=true;
 
         public override string ToString() => $"{Name}";
 
-        public string ParseForFileLine() => $"{Id}|{Name}";
+        public string ParseForFileLine() => $"{Id}|{Name}|{IsDeleted}";
 
         public override bool Equals(object? obj)
         {
@@ -56,5 +60,7 @@ namespace PRA_Project.Model
                 
                 
         }
+
+        
     }
 }

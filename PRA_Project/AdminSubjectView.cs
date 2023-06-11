@@ -16,11 +16,15 @@ namespace PRA_Project
     {
         SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
         IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
+
+        Subject subject;
         public AdminSubjectView()
         {
             InitializeComponent();
             LoadData();
         }
+
+        
 
         private void LoadData()
         {
@@ -32,13 +36,47 @@ namespace PRA_Project
         {
             foreach (Subject subject in subjectDictionary.Values)
             {
-                TableItem tableItem = new TableItem();
-                tableItem.lbID.Text = subject.Id.ToString();
-                tableItem.lbValue.Text = subject.Name;
-                flpContainer.Controls.Add(tableItem);
-
+                if (!subject.IsDeleted)
+                {
+                    TableItem tableItem = new TableItem();
+                    tableItem.lbID.Text = subject.Id.ToString();
+                    tableItem.Tag = subject;
+                    tableItem.lbValue.Text = subject.Name;
+                    tableItem.btnDelete.Visible = true;
+                    tableItem.btnEdit.Visible = true;
+                    tableItem.btnEdit.Click += BtnEdit_Click;
+                    tableItem.btnDelete.Click += BtnDelete_Click;
+                    flpContainer.Controls.Add(tableItem);
+                }
             }
         }
 
+        private void BtnDelete_Click(object? sender, EventArgs e)
+        {
+            Button btnDelete = sender as Button;
+
+            TableItem item = btnDelete.Parent.Parent.Parent as TableItem;
+
+            item.Visible = false;
+            subject = subjectDictionary.Values.SingleOrDefault(x => x.Equals(item.Tag));
+            subject.Delete();
+            subjectRepository.Save(subjectDictionary);
+        }
+
+        private void BtnEdit_Click(object? sender, EventArgs e)
+        {
+            Button btnEdit = sender as Button;
+            TableItem item = btnEdit.Parent.Parent.Parent as TableItem;
+            subject = subjectDictionary.Values.SingleOrDefault(x => x.Equals(item.Tag));
+            Thread newThread = new Thread(CreateNewSubjectEditor);
+            newThread.Start();
+            this.Close();
+        }
+
+        private void CreateNewSubjectEditor()
+        {
+            Form newForm = new AdminSubjectAdd(subject);
+            Application.Run(newForm);
+        }
     }
 }
