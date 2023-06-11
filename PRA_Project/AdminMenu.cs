@@ -61,7 +61,7 @@ namespace PRA_Project
 
         private void CreateNewAddNotificationsForm()
         {
-            Form newForm = new AdminNewsClassSelect();
+            Form newForm = new AdminSubjectSelect();
 
             Application.Run(newForm);
         }

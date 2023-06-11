@@ -29,17 +29,20 @@ namespace PRA_Project.Model
 
         public Lecturer ParseFromFileLine(string line, char DEL)
         {
+            LoadSubjects();
             string[] details = line.Split(DEL);
-            Subject subject = subjectDictionary.Values.SingleOrDefault(x => x.Name.Equals(details[5]));
+            
 
             return new Lecturer(
                 FirstName = details[1],
                 LastName = details[2],
                 Email = details[3],
                 Admin = bool.Parse(details[4]),
-                Subject = subject,
+                Subject = subjectDictionary.Values.SingleOrDefault(x=> x.Name.Equals(details[5])),
                 Password = details[6]
                 );
         }
+
+       
     }
 }

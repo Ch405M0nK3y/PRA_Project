@@ -15,12 +15,8 @@ namespace PRA_Project
 {
     public partial class AdminLecturerView : Form
     {
-
         UserRepository userRepository = RepositoryFactory.GetUserRepository();
         IDictionary<int, User> userDictionary = new Dictionary<int, User>();
-
-        SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
-        IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
         public AdminLecturerView()
         {
             InitializeComponent();
@@ -35,21 +31,15 @@ namespace PRA_Project
 
         private void ShowData()
         {
-            subjectDictionary = subjectRepository.Load();
             foreach (User user in userDictionary.Values)
             {
-
                 if (!user.Admin)
                 {
                     Lecturer lecturer = user as Lecturer;
-                    lecturer.Subject = subjectDictionary.Values.SingleOrDefault(x => x.Name.Equals(lecturer.Subject.Name));
                     TableItem tableItem = new TableItem();
-                    tableItem.lbID.Text = user.Id.ToString();
-                    tableItem.lbValue.Text = user.ToString();
+                    tableItem.lbID.Text = lecturer.Id.ToString();
+                    tableItem.lbValue.Text = lecturer.ToString();
                     flpContainer.Controls.Add(tableItem);
-                    
-
-
                 }
             }
         }

@@ -32,7 +32,7 @@ namespace PRA_Project.Model
         public override bool Equals(object? obj)
         {
             return obj is Subject subject &&
-                   Id == subject.Id;
+                   Name == subject.Name;
         }
 
         public override int GetHashCode()
