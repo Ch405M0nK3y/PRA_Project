@@ -11,7 +11,7 @@ namespace PRA_Project.Model
     {
         public Administrator(string firstName, string lastName, string email, bool admin, string password) : base( firstName, lastName, email, admin, password)
         {
-             
+            
         }
 
         public Administrator() { }
@@ -22,13 +22,129 @@ namespace PRA_Project.Model
             {
                 FirstName = "admin",
                 LastName = "admin",
-                Email = "admin@pra.hr",
+                Email = "a",
                 Admin = true,
-                Password = "Pa$$w0rd"
+                Password = "a"
                 
             };
             return administator;
         }
+
+        /// Subject dictionary      //////////////////////////////////////////////////////////////////////
+
+        private IDictionary<int, object> subjectDictionary;
+        private IRepository subjectRepo = RepositoryFactory.GetSubjectRepository();
+
+        public IDictionary<int, object> SubjectDictionary
+        {
+            get
+            {
+                if (userDictionary == null)
+                {
+                    LoadSubjects();
+
+                }
+                return new Dictionary<int, object>(subjectDictionary);
+            }
+        }
+
+        private void LoadSubjects()
+        {
+            subjectDictionary = new Dictionary<int, object>();
+            subjectDictionary = subjectRepo.Load();
+        }
+
+        /// Notification dictionary //////////////////////////////////////////////////////////////////////
+
+        private IDictionary<int, object> notificationDictionary;
+        private IRepository notificationRepo = RepositoryFactory.GetSubjectRepository();
+
+        public IDictionary<int, object> NotificationDictionary
+        {
+            get
+            {
+                if (userDictionary == null)
+                {
+                    LoadNotifications();
+
+                }
+                return new Dictionary<int, object>(notificationDictionary);
+            }
+        }
+
+        private void LoadNotifications()
+        {
+            notificationDictionary = new Dictionary<int, object>();
+            notificationDictionary = notificationRepo.Load();
+        }
+
+
+        //CRUD subject    //////////////////////////////////////////////////////////////////////
+
+        public Subject CreateSubject(string name)
+        {
+            return new Subject(name);
+        }
+
+
+        public void DeleteSubject(int id)
+        {
+            //Dohvati sve nastavnike i kolegije -> nastavnicima koji imaju prop kolegija kojeg se briše se
+            //postavlja na null i kolegij se briše
+
+
+
+        }
+
+        public void UpdateSubject(int id)
+        {
+
+        }
+
+        public void GetSubject(int id)
+        {
+            //Ispiši podatke o kolegiju i nastavnike vezane na kolegij
+        }
+
+
+        //CRUD lecturer   //////////////////////////////////////////////////////////////////////
+
+
+
+        public Lecturer CreateLecturer(string firstName, string lastName) => new(firstName, lastName,false);
+        public void UpdateLecturer(int id)
+        {
+            //TODO
+        }
+
+        public Lecturer GetLecturer(int id) { return new Lecturer("","",false); } //TODO
+
+
+
+        //CRUD notification   //////////////////////////////////////////////////////////////////////
+
+        public Notification CreateNotification()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateNotification()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Notification GetNotification()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteNotification()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
 
         public Administrator ParseFromFileLine(string line,char DEL)
         {

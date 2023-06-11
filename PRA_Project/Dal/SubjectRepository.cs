@@ -28,6 +28,7 @@ namespace PRA_Project.Dal
 
         public IDictionary<int, Subject> Load()
         {
+            Subject.ResetID();
             string[] lines = File.ReadAllLines(SUBJECT_FILE);
             IDictionary<int, Subject> dictionary = new Dictionary<int, Subject>();
 
@@ -54,7 +55,7 @@ namespace PRA_Project.Dal
             foreach (Subject o in dictionary.Values)
             {
                 Subject subject = o as Subject;
-                string line = subject.ToString();
+                string line = subject.ParseForFileLine();
                 fileContent[index++] = line;
             }
 

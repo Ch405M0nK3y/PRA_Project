@@ -34,6 +34,7 @@ namespace PRA_Project.Dal
 
         public IDictionary<int, User> Load()
         {
+            User.ResetID();
             string[] lines = File.ReadAllLines(USER_FILE);
             IDictionary<int, User> dictionary = new Dictionary<int, User>();
 
@@ -65,7 +66,18 @@ namespace PRA_Project.Dal
 
             foreach (User user in dictionary.Values)
             {
-                string line = user.ToString();
+                string line; 
+                if (user.Admin)
+                {
+                    Administrator admin = user as Administrator;
+                    line = admin.ParseForFileLine();
+                }
+                else
+                {
+                    Lecturer lecturer = user as Lecturer;
+                    line = lecturer.ParseForFileLine();
+                }
+               
                 fileContent[index++] = line;
             }
 

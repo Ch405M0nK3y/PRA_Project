@@ -1,48 +1,44 @@
-﻿namespace PRA_Project.Model
+﻿using PRA_Project.Dal;
+
+namespace PRA_Project.Model
 {
-    public class Lecturer : User, IPublisher
+    public class Lecturer : User
     {
-        public Lecturer(string firstName, string lastName, string email, bool admin, string password) : base(firstName, lastName, email, admin, password)
+        SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
+        IDictionary<int, Subject> subjectDictionary = new Dictionary<int, Subject>();
+
+        public Lecturer(string firstName, string lastName, string email, bool admin, Subject subject, string password) : base(firstName, lastName, email, admin, password)
         {
             admin = false;
+            Subject = subject;
         }
 
-        public Lecturer() { }
+        public Lecturer() {  }
 
         public Subject Subject { get; set; }
 
-        public string Email { get; set; }
 
-        public Notification CreateNotification()
+        public string ParseForFileLine()=> $"{Id}|{FirstName}|{LastName}|{Email}|{Admin}|{Subject}|{Password}";
+
+        public override string ToString()=> $"{Id}, {FirstName}, {LastName}, {Email}, {Subject}, {Password}";
+
+        public void LoadSubjects()
         {
-            throw new NotImplementedException();
+            subjectDictionary = subjectRepository.Load();
         }
 
-        public void DeleteNotification()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Notification GetNotification()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateNotification()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Lecturer ParseFromFileLine(string line,char DEL)
+        public Lecturer ParseFromFileLine(string line, char DEL)
         {
             string[] details = line.Split(DEL);
+            Subject subject = subjectDictionary.Values.SingleOrDefault(x => x.Name.Equals(details[5]));
 
             return new Lecturer(
                 FirstName = details[1],
                 LastName = details[2],
                 Email = details[3],
                 Admin = bool.Parse(details[4]),
-                Password = details[5]
+                Subject = subject,
+                Password = details[6]
                 );
         }
     }

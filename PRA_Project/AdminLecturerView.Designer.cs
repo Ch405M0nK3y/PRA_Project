@@ -28,17 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flpLecturerView = new FlowLayoutPanel();
+            flpContainer = new FlowLayoutPanel();
             pbLogo = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbLogo).BeginInit();
             SuspendLayout();
             // 
-            // flpLecturerView
+            // flpContainer
             // 
-            flpLecturerView.Location = new Point(138, 71);
-            flpLecturerView.Name = "flpLecturerView";
-            flpLecturerView.Size = new Size(900, 600);
-            flpLecturerView.TabIndex = 14;
+            flpContainer.AutoScroll = true;
+            flpContainer.FlowDirection = FlowDirection.TopDown;
+            flpContainer.Location = new Point(138, 71);
+            flpContainer.Name = "flpContainer";
+            flpContainer.Size = new Size(900, 600);
+            flpContainer.TabIndex = 14;
+            flpContainer.WrapContents = false;
             // 
             // pbLogo
             // 
@@ -55,7 +58,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1184, 761);
-            Controls.Add(flpLecturerView);
+            Controls.Add(flpContainer);
             Controls.Add(pbLogo);
             Name = "AdminLecturerView";
             StartPosition = FormStartPosition.CenterScreen;
@@ -66,7 +69,7 @@
 
         #endregion
 
-        private FlowLayoutPanel flpLecturerView;
+        private FlowLayoutPanel flpContainer;
         private PictureBox pbLogo;
     }
 }

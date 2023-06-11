@@ -23,7 +23,11 @@ namespace PRA_Project.Model
             Id = id++;
         }
 
-        public override string ToString() => $"{Id}|{Name}";
+        public static void ResetID() => id = 0;
+
+        public override string ToString() => $"{Name}";
+
+        public string ParseForFileLine() => $"{Id}|{Name}";
 
         public override bool Equals(object? obj)
         {
