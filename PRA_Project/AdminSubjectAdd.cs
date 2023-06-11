@@ -17,23 +17,56 @@ namespace PRA_Project
         public AdminSubjectAdd()
         {
             InitializeComponent();
-            dictionary = new Dictionary<int, Subject>();
-            dictionary = subjectRepository.Load();
+            subjectDictionary = new Dictionary<int, Subject>();
+            subjectDictionary = subjectRepository.Load();
         }
 
         SubjectRepository subjectRepository = RepositoryFactory.GetSubjectRepository();
-        IDictionary<int, Subject> dictionary;
+        IDictionary<int, Subject> subjectDictionary;
+        private Subject subject;
         
-        
-        
+        public AdminSubjectAdd(Subject subject)
+        {
+            InitializeComponent();
+            subjectDictionary = new Dictionary<int, Subject>();
+            subjectDictionary = subjectRepository.Load();
+            this.subject = subject;
+            InitializeEditing();
+        }
+
+        private void InitializeEditing()
+        {
+            btnSubmitClass.Text = "Submit changes";
+            btnViewAllClasses.Visible = false;
+        }
 
         private void btnSubmitClass_Click(object sender, EventArgs e)
         {
-            Subject sub = new Subject(tbClassName.Text);
-            dictionary.Add(sub.Id, sub);
-            tbClassName.Text = "";
-            subjectRepository.Save(dictionary);
-            MessageBox.Show("Successfully submitted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if(tbClassName.Text!= null && btnSubmitClass.Text.Equals("Submit"))
+            {
+                Subject sub = new Subject(tbClassName.Text, false);
+                subjectDictionary.Add(sub.Id, sub);
+                tbClassName.Text = "";
+                subjectRepository.Save(subjectDictionary);
+                MessageBox.Show("Successfully submitted!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else if(tbClassName.Text!= null)
+            {
+                subject.Name = tbClassName.Text;
+                subjectDictionary.Remove(subject.Id);
+                subjectDictionary.Add(subject.Id, subject);
+                subjectRepository.Save(subjectDictionary);
+                MessageBox.Show($"Succesfully updated!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+
+                Thread newThread = new Thread(CreateNewSubjectView);
+                newThread.Start();
+            }
+
+        }
+        private void CreateNewSubjectView()
+        {
+            Form newForm = new AdminSubjectView();
+            Application.Run(newForm);
         }
 
         private void btnViewAllClasses_Click(object sender, EventArgs e)
@@ -48,7 +81,13 @@ namespace PRA_Project
         }
 
 
-    
-    
-}
+
+
+
+
+
+
+
+
+    }
 }
